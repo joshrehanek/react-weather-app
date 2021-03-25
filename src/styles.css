@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.App {
+    background-image: url("./assets/cloudy.jpg");
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.5 ease-out;
+}
+
+.App.sunny {
+    background-image: url("./assets/sunny.jpeg");
+}
+
+main {
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+    padding: 30px;
+}
+
+.search-area {
+    width: 100%;
+    margin: 0 0 75px;
+}
+
+.search-area .search-bar {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    appearance: none;
+    border: beige;
+    background: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 16px 16px 16px 16px;
+    box-shadow: 0px 5px rgba(0, 0, 0, .3);
+    color: #313133;
+    font-size: 24px;
+    transition: 0.4sec ease-in;
+}
+
+.search-area .search-bar:focus {
+    background-color: rgba(255, 255, 255, 0.75);
+}
