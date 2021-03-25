@@ -9,7 +9,7 @@ body {
 }
 
 .App {
-    background-image: url("./assets/cloudy.jpg");
+    background-image: url("./assets/sunny.jpeg");
     background-size: cover;
     background-position: bottom;
     transition: 0.5 ease-out;
@@ -21,7 +21,7 @@ body {
 
 main {
     min-height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
     padding: 30px;
 }
 
@@ -48,4 +48,48 @@ main {
 
 .search-area .search-bar:focus {
     background-color: rgba(255, 255, 255, 0.75);
+}
+
+.location-area .location {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 1px 2px rgba(40, 40, 20, 0.972);
+}
+
+.location-area .date {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 500;
+    text-align: center;
+    font-style: italic;
+    text-shadow: 2px 2px rgba(40, 40, 20, 0.972);
+}
+
+.weather-area {
+    text-align: center;
+}
+
+.weather-area .temp {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    padding: 15px 25px;
+    margin: 30px auto;
+    font-size: 42px;
+    font-weight: 800;
+    border-radius: 16px 16px 16px 16px;
+    background-color: rgba(255, 255, 255, 0.4);
+    text-shadow: 2px 2px rgba(40, 40, 20, 0.972);
+    text-align: center;
+    box-shadow: 2px 4px rgba(0, 0, 0, .3);
+}
+
+.weather-area .weather {
+    color:#fff;
+    font-size: 38px;
+    padding: 10px;
+    font-weight: 600;
+    text-shadow: 2px 2px rgba(40, 40, 20, 0.972);
 }
