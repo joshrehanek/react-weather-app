@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState }from "react"
 import "../src/styles.css";
 
 const apiKey = {
@@ -7,6 +7,21 @@ const apiKey = {
 }
 
 export default function App() {
+
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState({});
+
+  const search = evt => {
+    if (evt.key === "Enter") {
+      fetch(`${apiKey.base}weather?q=${query}&units=metric&APPID=${apiKey.key}`)
+      .then(res => res.json())
+      .then(result => {
+        setQuery("");
+        setWeather(result);
+        console.log(result);
+      })
+    }
+  }
 
   const handleDate = (d) => {
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
@@ -24,7 +39,7 @@ export default function App() {
     <div className="App">
       <main>
         <div className="search-area">
-          <input type="text" className="search-bar" placeholder="City" />
+          <input type="text" className="search-bar" placeholder="City" onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search}/>
         </div>
         <div className="location-area">
           <div className="location">Suva, Fiji</div>
