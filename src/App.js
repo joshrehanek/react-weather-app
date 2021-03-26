@@ -1,4 +1,4 @@
-import React, { useState }from "react"
+import React, { useState } from "react"
 import "../src/styles.css";
 
 const apiKey = {
@@ -13,18 +13,18 @@ export default function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`${apiKey.base}weather?q=${query}&units=metric&APPID=${apiKey.key}`)
-      .then(res => res.json())
-      .then(result => {
-        setQuery("");
-        setWeather(result);
-        console.log(result);
-      })
+      fetch(`${apiKey.base}weather?q=${query}&units=imperial&APPID=${apiKey.key}`)
+        .then(res => res.json())
+        .then(result => {
+          setQuery("");
+          setWeather(result);
+          console.log(result);
+        })
     }
   }
 
   const handleDate = (d) => {
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     let day = days[d.getDay()];
@@ -36,23 +36,32 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div className={
+      (typeof weather.main != "undefined" ) 
+        ? ((weather.main.temp > 60) 
+        ? 'App sunny' 
+        : 'App') 
+        : 'App'}>
       <main>
         <div className="search-area">
-          <input type="text" className="search-bar" placeholder="City" onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search}/>
+          <input type="text" className="search-bar" placeholder="City" onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search} />
         </div>
+        {(typeof weather.main != "undefined") ? (  
+          <div>
         <div className="location-area">
-          <div className="location">Suva, Fiji</div>
+          <div className="location">{weather.name}, {weather.sys.country}</div>
           <div className="date">{handleDate(new Date())}</div>
         </div>
         <div className="weather-area">
           <div className="temp">
-              82 F
+              {Math.round(weather.main.temp)}F
           </div>
           <div className="weather">
-              Sunny
+              {weather.weather[0].main}
           </div>
         </div>
+        </div>
+        ) : ("")}  
       </main>
     </div>
   );
