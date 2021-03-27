@@ -60,7 +60,7 @@ export default function App() {
           <input type="text" className="search-bar" placeholder="City" onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search} />
         </div>
         {(typeof weather.main != "undefined") ? (  
-          <div>
+          <div className="info">
         <div className="location-area">
           <div className="location">{weather.name}, {weather.sys.country}</div>
           <div className="date">{handleDate(new Date())}</div>
