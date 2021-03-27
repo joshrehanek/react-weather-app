@@ -19,6 +19,7 @@ export default function App() {
           setQuery("");
           setWeather(result);
           console.log(result);
+          console.log(result.weather[0].main)
         })
     }
   }
@@ -36,11 +37,17 @@ export default function App() {
   }
 
   return (
-    <div className={
+    <div className= {
       (typeof weather.main != "undefined" ) 
-        ? ((weather.main.temp > 60) 
-        ? 'App sunny' 
-        : 'App') 
+        ? ((weather.weather[0].main === "Clear") 
+        ? 'App sunny'
+        : (weather.weather[0].main === "Clouds")
+        ? 'App clouds' 
+        : (weather.weather[0].main === 'Rain')
+        ? 'App rain'
+        : (weather.weather[0].main === 'Snow')
+        ? 'App snow'
+        : 'App')
         : 'App'}>
       <main>
         <div className="search-area">
