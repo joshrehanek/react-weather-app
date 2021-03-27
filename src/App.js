@@ -1,16 +1,23 @@
+// imports react and react-hook 'useState'
 import React, { useState } from "react"
+//imports css
 import "../src/styles.css";
 
+//sets up API key which contains personal key and base URL
 const apiKey = {
   key: "1236caef6b9134318c4caad26620bb42",
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
+//declares and exports App function 
 export default function App() {
 
+  // declare query as value and setQuery as function to maniputlate query
   const [query, setQuery] = useState("");
+  //declare weather as value and setWeather as function to mainpulate weather
   const [weather, setWeather] = useState({});
 
+  // 
   const search = evt => {
     if (evt.key === "Enter") {
       fetch(`${apiKey.base}weather?q=${query}&units=imperial&APPID=${apiKey.key}`)
@@ -19,7 +26,6 @@ export default function App() {
           setQuery("");
           setWeather(result);
           console.log(result);
-          console.log(result.weather[0].main)
         })
     }
   }
